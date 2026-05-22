@@ -186,5 +186,5 @@ Distributed under the **MIT License**. See [LICENSE](LICENSE) for more informati
 <br/>
 
 <div align="center">
-  <i>Developed with ❤️ by <a href="https://github.com/QasimKhan">Qasim Khan</a></i>
+  <i>Developed by <a href="https://github.com/QasimKhan">Qasim Khan</a></i>
 </div>
