@@ -1,0 +1,83 @@
+{
+  "description": "Synthetic chunks for offline Recall@k retrieval checks (no LLM).",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "cases": [
+    {
+      "id": "jwt-auth",
+      "question": "Where do we validate JWT bearer tokens and refresh signing keys?",
+      "k": 5,
+      "gold_files": ["src/auth/jwt_handler.py"],
+      "chunks": [
+        {
+          "file_path": "src/auth/jwt_handler.py",
+          "chunk_index": 0,
+          "content": "def verify_bearer_token(token: str) -> dict:\n    \"\"\"Validate JWT signature and expiry before routing.\"\"\"\n    claims = decode_jwt(token)\n    rotate_signing_key_if_due()\n    return claims\n"
+        },
+        {
+          "file_path": "src/db/pool.py",
+          "chunk_index": 0,
+          "content": "async def acquire_pool() -> Pool:\n    \"\"\"PostgreSQL connection pool sizing for read replicas.\"\"\"\n    return await create_pool(min_size=2, max_size=20)\n"
+        },
+        {
+          "file_path": "README.md",
+          "chunk_index": 0,
+          "content": "# Demo service\n\nRun `make dev` to start the API locally.\n"
+        }
+      ]
+    },
+    {
+      "id": "pool-config",
+      "question": "How is the database connection pool configured for replicas?",
+      "k": 4,
+      "gold_files": ["src/db/pool.py"],
+      "chunks": [
+        {
+          "file_path": "src/db/pool.py",
+          "chunk_index": 0,
+          "content": "async def acquire_pool() -> Pool:\n    \"\"\"PostgreSQL connection pool sizing for read replicas.\"\"\"\n    return await create_pool(min_size=2, max_size=20)\n"
+        },
+        {
+          "file_path": "src/auth/jwt_handler.py",
+          "chunk_index": 0,
+          "content": "def verify_bearer_token(token: str) -> dict:\n    return decode_jwt(token)\n"
+        }
+      ]
+    },
+    {
+      "id": "readme-dev",
+      "question": "What command starts local development?",
+      "k": 3,
+      "gold_files": ["README.md"],
+      "chunks": [
+        {
+          "file_path": "README.md",
+          "chunk_index": 0,
+          "content": "# Demo service\n\nRun `make dev` to start the API locally.\n"
+        },
+        {
+          "file_path": "Makefile",
+          "chunk_index": 0,
+          "content": "dev:\n\tuvicorn app.main:app --reload\n"
+        }
+      ]
+    },
+    {
+      "id": "makefile-target",
+      "question": "Which uvicorn application object does the Makefile run?",
+      "k": 3,
+      "gold_files": ["Makefile"],
+      "chunks": [
+        {
+          "file_path": "Makefile",
+          "chunk_index": 0,
+          "content": "dev:\n\tuvicorn app.main:app --reload\n"
+        },
+        {
+          "file_path": "README.md",
+          "chunk_index": 0,
+          "content": "# Demo service\n\nSee docs for architecture overview.\n"
+        }
+      ]
+    }
+  ]
+}

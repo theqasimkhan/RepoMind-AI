@@ -1,0 +1,44 @@
+# Node
+node_modules/
+.next/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Env — block all .env* variants globally; allow only .env.example templates
+**/.env
+**/.env.*
+!**/.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Databases & Caches
+*.db
+*.sqlite
+*.sqlite3
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE & Editor
+.vscode/
+.idea/
+.cursor/
+*.swp
+*.swo
+
+# Logs
+*.log

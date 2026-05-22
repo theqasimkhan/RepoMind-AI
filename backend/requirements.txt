@@ -1,0 +1,26 @@
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+pydantic==2.10.3
+pydantic-settings==2.6.1
+python-dotenv==1.0.1
+httpx==0.28.1
+langchain==0.3.9
+langchain-google-genai==2.0.7
+openai==1.56.2
+langchain-openai==0.2.11
+# Phase 2 — Auth
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+# Phase 2 — Background queues
+celery[redis]==5.4.0
+redis==5.2.1
+# Phase 2 — FAISS Semantic Search
+faiss-cpu==1.9.0
+sentence-transformers==3.3.1
+pytest==8.3.4
+# Rate limiting
+slowapi==0.1.9
+# Connection pooling
+sqlalchemy==2.0.36
+# Database migrations
+alembic==1.18.4
