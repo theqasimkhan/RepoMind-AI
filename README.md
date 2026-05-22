@@ -175,7 +175,7 @@ All endpoints are prefixed with `/api/v1`. Interactive Swagger UI is available a
 
 ## 📄 License
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
+Distributed under the **MIT License**. See [LICENSE](LICENSE) for more information.
 
 <br/>
 
