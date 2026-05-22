@@ -1,285 +1,184 @@
-# RepoMind AI
+# 🧠 RepoMind AI
+
+<div align="center">
+  <img src="docs/screenshots/hero.png" alt="RepoMind AI — repository intelligence platform" width="800" />
+</div>
+
+<br/>
+
+<div align="center">
+  <a href="#-architecture--tech-stack"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" /></a>
+  <a href="#-architecture--tech-stack"><img src="https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" /></a>
+  <a href="#-architecture--tech-stack"><img src="https://img.shields.io/badge/FastAPI-0.110%2B-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" /></a>
+  <a href="#-architecture--tech-stack"><img src="https://img.shields.io/badge/Next.js-15-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" /></a>
+  <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License" />
+</div>
+
+<br/>
 
 <p align="center">
-  <img src="docs/screenshots/hero.png" alt="RepoMind AI — repository intelligence platform" width="760" />
-</p>
-
-<p align="center">
-  <a href="#local-development"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.10+" /></a>
-  <a href="#local-development"><img src="https://img.shields.io/badge/Node.js-18%2B-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node.js 18+" /></a>
-  <a href="#local-development"><img src="https://img.shields.io/badge/FastAPI-0.110%2B-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" /></a>
-  <a href="#local-development"><img src="https://img.shields.io/badge/Next.js-15-000000?style=flat-square&logo=next.js&logoColor=white" alt="Next.js 15" /></a>
-  <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="MIT License" />
-</p>
-
-<p align="center">
-  <strong>AI-powered GitHub repository intelligence — clone, analyse, chat, and visualise any public repo in seconds.</strong>
-</p>
-
----
-
-## ✨ Features
-
-| Feature | Details |
-|---|---|
-| **Repository analysis** | Deep-clones any public GitHub repo (shallow, depth 48); scans files, parses dependencies, detects stack signals, generates commit timeline |
-| **RAG-grounded chat** | FAISS semantic search; optional HyDE query expansion; optional cross-encoder reranking; chunk-level citations in responses |
-| **Bounded agent** | Multi-tool loop (retrieve → summarise → diagram → answer) with configurable round limits; gracefully degrades to single-shot RAG |
-| **Mermaid diagrams** | Heuristic `flowchart TB` from detected stack — frontend/backend/DB/RAG/devops/architecture-pattern nodes; ML repos show Streamlit / Gradio / Jupyter |
-| **3D Repo Galaxy** | WebGL force graph of file-tree and API paths; highlighted by chat evidence |
-| **Code DNA** | Language distribution panel derived from file extensions |
-| **Async jobs** | Progress-polled analysis jobs (Celery + Redis or asyncio fallback); full job history in dashboard |
-| **Auth** | GitHub OAuth; JWT in an httpOnly cookie (`repomind_token`); API accepts **cookie or Bearer** |
-| **ML repo support** | Detects Streamlit, Gradio, Jupyter notebooks, Panel, and Plotly Dash as frontend signals |
-
----
-
-## 📸 Screenshots
-
-<p align="center">
-  <img src="docs/screenshots/dashboard.png" alt="RepoMind Dashboard showing analysis progress and history" width="48%" />
-  &nbsp;
-  <img src="docs/screenshots/chat.png" alt="RepoMind Chat Interface with citations and 3D galaxy" width="48%" />
+  <strong>An AI-powered GitHub repository intelligence platform. Clone, analyze, chat, and visualize any public codebase in seconds.</strong>
 </p>
 
 ---
 
-## 🗂️ Monorepo layout
+## 📖 Table of Contents
+- [✨ Key Features](#-key-features)
+- [📸 Showcase](#-showcase)
+- [🏗️ Architecture & Tech Stack](#-architecture--tech-stack)
+- [🚀 Quick Start Guide](#-quick-start-guide)
+  - [Prerequisites](#prerequisites)
+  - [Environment Variables](#environment-variables)
+  - [Local Development](#local-development)
+  - [Docker Compose](#docker-compose)
+- [🌐 API Overview](#-api-overview)
+- [🗺️ Roadmap](#️-roadmap)
+- [📄 License](#-license)
 
+---
+
+## ✨ Key Features
+
+- **🚀 Instant Repository Analysis:** Deep-clones public GitHub repositories, performs static analysis, parses dependencies, and detects stack signals.
+- **🤖 RAG-Grounded AI Chat:** Talk to your codebase! Powered by **FAISS semantic search**, HyDE query expansion, and cross-encoder reranking. Every AI response includes precise chunk-level citations.
+- **⚙️ Bounded Agent Loop:** Intelligent multi-tool agent that autonomously retrieves, summarizes, and generates diagrams, gracefully falling back to single-shot RAG when needed.
+- **🌌 3D Repo Galaxy:** Stunning WebGL force-directed graph to visualize file trees, API paths, and code relationships in 3D space.
+- **📊 Auto-Generated Architecture Diagrams:** Generates heuristic `flowchart TB` Mermaid diagrams mapping out frontend, backend, DBs, DevOps, and even ML components (Streamlit, Jupyter, etc.).
+- **⚡ Async Task Processing:** Uses **Celery & Redis** for background analysis jobs with real-time polling (includes an `asyncio` fallback).
+- **🔐 Secure Authentication:** Seamless GitHub OAuth integration with `httpOnly` JWT cookies for maximum security.
+
+---
+
+## 📸 Showcase
+
+<div align="center">
+  <img src="docs/screenshots/dashboard.png" alt="RepoMind Dashboard" width="49%" />
+  <img src="docs/screenshots/chat.png" alt="RepoMind Chat Interface" width="49%" />
+</div>
+
+---
+
+## 🏗️ Architecture & Tech Stack
+
+RepoMind is built as a highly scalable, decoupled monorepo:
+
+* **Backend:** FastAPI (Python), SQLAlchemy (SQLite/PostgreSQL), Celery, Redis.
+* **Frontend:** Next.js 15 (App Router), React, Tailwind CSS, Framer Motion, Three.js (WebGL).
+* **AI Engine:** LangChain, FAISS (Vector Database), Sentence Transformers (Embeddings), Google Gemini & OpenRouter integrations.
+
+### Directory Structure
 ```text
 RepoMind AI/
-├── ai_engine/           # RAG pipeline — LLM orchestration (Gemini / OpenRouter)
-├── repo-parser/         # Heuristic stack detector & chunking helpers
+├── ai_engine/           # RAG pipeline & LLM orchestration
+├── backend/             # FastAPI core, API routes, Auth, Celery workers
+├── frontend/            # Next.js 15 web application
+├── repo-parser/         # Heuristic codebase and stack detector
 ├── diagram-engine/      # Standalone Mermaid generation service
-├── vector-store/        # FAISS VectorIndex wrapper & indexing utilities
-├── backend/             # FastAPI app — APIs, auth, services, Celery worker entry
-│   ├── app/
-│   │   ├── api/v1/      # repositories, chat, auth, health, retrieval-eval routes
-│   │   ├── core/        # config (pydantic-settings), dependencies
-│   │   ├── models/      # SQLAlchemy ORM models
-│   │   ├── repositories/# SQLite access layer (analysis jobs, chunks, users)
-│   │   ├── schemas/     # Pydantic request/response schemas
-│   │   ├── services/    # Business logic (repository, chat, embedding, HyDE, rerank)
-│   │   ├── utils/       # URL normalisation, helpers
-│   │   └── worker/      # Celery app & tasks
-│   └── tests/           # pytest suites
-├── frontend/            # Next.js 15 (App Router, Tailwind CSS, Framer Motion)
-│   ├── app/             # Pages: dashboard, chat, diagrams, architect, auth, settings
-│   ├── components/      # UI components (ChatInterface, MermaidDiagram, RepoGalaxy3D …)
-│   └── lib/             # API client, types, URL utilities
-├── workers/             # Supplementary worker notes (main Celery app under backend/)
-├── docker/              # Dockerfiles for backend & frontend
-├── docker-compose.yml   # Full-stack compose definition
-└── docs/                # Architecture & advancement phase docs
+├── vector-store/        # FAISS VectorIndex wrapper
+├── docker/              # Production & Dev Dockerfiles
+└── docker-compose.yml   # Full-stack orchestration
 ```
 
 ---
 
-## 🔧 Prerequisites
+## 🚀 Quick Start Guide
 
+### Prerequisites
 - **Python 3.10+**
-- **Node.js 18+** and npm
-- **Redis** — Celery broker; run locally or via Docker
-- **SQLite** — default persistence (no extra setup needed)
-- **Git** — must be on `PATH` (used for shallow clones)
+- **Node.js 18+** & npm
+- **Redis** (For Celery background tasks)
+- **Git** (Must be accessible in your `PATH`)
 
-At least one LLM provider key is required for chat and agent features:
+You will also need at least one LLM API key:
+- **Google Gemini:** `GEMINI_API_KEY` ([Get here](https://aistudio.google.com/app/apikey))
+- **OpenRouter:** `OPENROUTER_API_KEY` ([Get here](https://openrouter.ai/keys))
 
-| Provider | Key variable | Where to get it |
-|---|---|---|
-| Google Gemini | `GEMINI_API_KEY` | [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey) |
-| OpenRouter | `OPENROUTER_API_KEY` | [openrouter.ai/keys](https://openrouter.ai/keys) |
-| OpenAI | `OPENAI_API_KEY` | [platform.openai.com/api-keys](https://platform.openai.com/api-keys) |
+### Environment Variables
 
-> Repository cloning and structural analysis run without any API key.  
-> Chat, HyDE, and the agent loop require at least one key.
-
----
-
-## ⚙️ Environment variables
-
-### Backend — `backend/.env`
-
-Copy the template first:
-
+**1. Backend (`backend/.env`)**
 ```bash
-# Windows PowerShell
+# Windows
 Copy-Item backend/.env.example backend/.env
-
-# macOS / Linux
+# Mac/Linux
 cp backend/.env.example backend/.env
 ```
+Edit the `.env` file to add your API keys. Generate a `JWT_SECRET` using `python -c "import secrets; print(secrets.token_urlsafe(32))"`.
 
-Then edit `backend/.env`:
-
-| Variable | Required | Description |
-|---|---|---|
-| `GEMINI_API_KEY` | ✅ for chat | Gemini API key |
-| `OPENROUTER_API_KEY` | optional | OpenRouter key (alternative / additional model) |
-| `JWT_SECRET` | ✅ | Random 32-char secret — generate with `python -c "import secrets; print(secrets.token_urlsafe(32))"` |
-| `CORS_ORIGINS` | ✅ | Exact frontend origin, e.g. `http://localhost:3000` — **never `*`** with cookies |
-| `FRONTEND_URL` | ✅ | OAuth redirect base, e.g. `http://localhost:3000` |
-| `GITHUB_CLIENT_ID` | optional | GitHub OAuth app client ID |
-| `GITHUB_CLIENT_SECRET` | optional | GitHub OAuth app client secret |
-| `SQLITE_DB_PATH` | optional | SQLite file path (default: `repomind.db`) |
-| `REDIS_URL` | optional | Celery broker (default: `redis://localhost:6379/0`) |
-
-> **Security:** `backend/.env` is listed in `.gitignore` — never commit it.  
-> The `.gitignore` blocks all `**/.env` and `**/.env.*` files globally.
-
-### Frontend — `frontend/.env.local`
-
+**2. Frontend (`frontend/.env.local`)**
 ```bash
-# Windows PowerShell
+# Windows
 Copy-Item frontend/.env.example frontend/.env.local
-
-# macOS / Linux
+# Mac/Linux
 cp frontend/.env.example frontend/.env.local
 ```
 
-| Variable | Description |
-|---|---|
-| `NEXT_PUBLIC_API_BASE_URL` | Backend base URL, e.g. `http://localhost:8000` |
+### Local Development
 
----
-
-## 🚀 Local development
-
-### 1 — Backend
-
-```powershell
-# From the repo root (PowerShell)
+**Terminal 1: Start the Backend (FastAPI)**
+```bash
 cd backend
 python -m venv .venv
+
+# On Windows: 
 .\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
-
-```bash
-# macOS / Linux
-cd backend
-python -m venv .venv
+# On Mac/Linux: 
 source .venv/bin/activate
+
 pip install -r requirements.txt
-```
-
-Start the API server (the SQLite schema is created automatically on first run):
-
-```bash
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-Optional — start a Celery worker for background analysis jobs (requires Redis):
-
+*(Optional) Terminal 2: Start Celery Worker*
 ```bash
+cd backend
 celery -A app.worker.celery_app worker --loglevel=info
 ```
 
-> Without Redis/Celery, jobs fall back to `asyncio.create_task` automatically.
-
-### 2 — Frontend
-
+**Terminal 3: Start the Frontend (Next.js)**
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
+Open **[http://localhost:3000](http://localhost:3000)** in your browser!
 
-Open **http://localhost:3000**.
-
-### 3 — Docker Compose (full stack)
-
+### Docker Compose
+To run the entire stack effortlessly without manual setups:
 ```bash
-# From repo root
 docker compose up --build
 ```
-
-Ensure both `backend/.env` and `frontend/.env.local` exist before running Compose — they are referenced by `docker-compose.yml`.
+*(Ensure your `.env` and `.env.local` files are created first!)*
 
 ---
 
-## 🌐 API overview
+## 🌐 API Overview
 
-Base path: `/api/v1`
+All endpoints are prefixed with `/api/v1`. Interactive Swagger UI is available at `http://localhost:8000/docs`.
 
-| Method | Path | Description |
+| Method | Endpoint | Description |
 |---|---|---|
-| `POST` | `/repositories/analyze` | Synchronous analysis (small repos) |
-| `POST` | `/repositories/analyze/async` | Start async analysis job |
-| `GET` | `/repositories/analyze/async/{job_id}` | Poll job status |
-| `GET` | `/repositories/analyze/async` | List recent jobs |
-| `GET` | `/repositories/analysis/latest?repo_url=…` | Fetch latest completed snapshot |
-| `POST` | `/chat/query` | RAG-grounded chat query |
-| `GET` | `/health` | Health check |
-| `GET/POST` | `/auth/*` | GitHub OAuth flow |
-
-Interactive docs: **http://localhost:8000/docs**
-
----
-
-## 🔍 URL formats accepted
-
-The backend normalises all of the following to `https://github.com/owner/repo`:
-
-```text
-https://github.com/owner/repo
-http://github.com/owner/repo
-github.com/owner/repo
-owner/repo
-git@github.com:owner/repo.git
-```
-
----
-
-## 🧠 Stack detection signals
-
-`repo-parser/stack_detector.py` and `backend/app/services/repository_service.py` detect:
-
-**Frontend** — Next.js, React, Vue, Angular, Svelte, Nuxt, Vite, Tailwind CSS, **Streamlit, Gradio, Jupyter notebooks, Panel, Plotly Dash**
-
-**Backend** — FastAPI, Flask, Django, Express/Node.js, Spring Boot + language signals (Python, Go, Rust, Java, Node.js)
-
-**Databases** — PostgreSQL, MongoDB, MySQL, Redis, SQLite, SQLAlchemy, Prisma
-
-**DevOps** — Docker, GitHub Actions, Kubernetes, Terraform, Make
-
----
-
-## 🧪 Testing
-
-```bash
-cd backend
-python -m pytest tests -q
-```
-
-Retrieval, chunking, and chat coverage live under `backend/tests/`.
-
----
-
-## 📋 Recent improvements
-
-| Area | Change |
-|---|---|
-| **URL normalisation** | All four GitHub URL formats (`https://`, `github.com/`, `owner/repo`, SSH) now resolve to a canonical clone URL before `git clone` |
-| **ML frontend detection** | Streamlit, Gradio, Jupyter, Panel, Plotly Dash added to both `stack_detector.py` and `repository_service.py` |
-| **Mermaid diagrams** | `diagram-engine/mermaid_service.py` rewritten from a fixed 5-node stub into a full `flowchart TB` generator matching the backend service |
-| **Chat link** | Dashboard "Chat" button now uses `repo_clone_url` from the analysis result (already canonical) instead of re-normalising `job.repo_url` client-side |
-| **`.gitignore`** | Broadened to `**/.env` + `**/.env.*` glob; `.env.example` templates are explicitly allowed |
-| **Key hygiene** | `backend/.env` ships with blank `GEMINI_API_KEY` and `OPENROUTER_API_KEY` — add your own locally and never commit |
+| `POST` | `/repositories/analyze/async` | Trigger background async analysis job |
+| `GET` | `/repositories/analyze/async/{id}`| Poll analysis job status |
+| `POST` | `/chat/query` | Submit a RAG-grounded query to a repository |
+| `GET` | `/auth/github` | Initiate GitHub OAuth flow |
 
 ---
 
 ## 🗺️ Roadmap
 
-Phased work is tracked in [docs/ADVANCEMENT_PHASES.md](docs/ADVANCEMENT_PHASES.md):
-
-- **Phase 1 (done)** — Core analysis, FAISS RAG, embedding cache, async jobs
-- **Phase 2 (done)** — GitHub OAuth, JWT auth, HyDE, cross-encoder rerank, Celery
-- **Phase 3 (active)** — Bounded tool agent, diagram tool, multi-step reasoning
-- **Phase 4 (planned)** — Multi-repo comparisons, PR-level diff chat, CI integration
+- [x] **Phase 1** — Core analysis, FAISS RAG, embedding cache, async jobs
+- [x] **Phase 2** — GitHub OAuth, JWT auth, HyDE, cross-encoder rerank, Celery
+- [x] **Phase 3** — Bounded tool agent, generative diagramming, multi-step reasoning
+- [ ] **Phase 4** — Multi-repo comparisons, PR-level diff chat, CI integrations
 
 ---
 
 ## 📄 License
 
-This project is released under the **MIT License** — see [LICENSE](LICENSE) for details.
+Distributed under the **MIT License**. See `LICENSE` for more information.
+
+<br/>
+
+<div align="center">
+  <i>Developed with ❤️ by <a href="https://github.com/QasimKhan">Qasim Khan</a></i>
+</div>
