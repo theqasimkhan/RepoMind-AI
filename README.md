@@ -1,10 +1,6 @@
 # 🧠 RepoMind AI
 
-<div align="center">
-  <img src="docs/screenshots/hero.png" alt="RepoMind AI — repository intelligence platform" width="800" />
-</div>
 
-<br/>
 
 <div align="center">
   <a href="#-architecture--tech-stack"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" /></a>
@@ -24,7 +20,6 @@
 
 ## 📖 Table of Contents
 - [✨ Key Features](#-key-features)
-- [📸 Showcase](#-showcase)
 - [🏗️ Architecture & Tech Stack](#-architecture--tech-stack)
 - [🚀 Quick Start Guide](#-quick-start-guide)
   - [Prerequisites](#prerequisites)
@@ -46,15 +41,6 @@
 - **📊 Auto-Generated Architecture Diagrams:** Generates heuristic `flowchart TB` Mermaid diagrams mapping out frontend, backend, DBs, DevOps, and even ML components (Streamlit, Jupyter, etc.).
 - **⚡ Async Task Processing:** Uses **Celery & Redis** for background analysis jobs with real-time polling (includes an `asyncio` fallback).
 - **🔐 Secure Authentication:** Seamless GitHub OAuth integration with `httpOnly` JWT cookies for maximum security.
-
----
-
-## 📸 Showcase
-
-<div align="center">
-  <img src="docs/screenshots/dashboard.png" alt="RepoMind Dashboard" width="49%" />
-  <img src="docs/screenshots/chat.png" alt="RepoMind Chat Interface" width="49%" />
-</div>
 
 ---
 
