@@ -1,6 +1,10 @@
 # 🧠 RepoMind AI
 
+<div align="center">
+  <img src="docs/screenshots/Hero.PNG" alt="RepoMind AI — repository intelligence platform" width="800" />
+</div>
 
+<br/>
 
 <div align="center">
   <a href="#-architecture--tech-stack"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" /></a>
@@ -20,6 +24,7 @@
 
 ## 📖 Table of Contents
 - [✨ Key Features](#-key-features)
+- [📸 Showcase](#-showcase)
 - [🏗️ Architecture & Tech Stack](#-architecture--tech-stack)
 - [🚀 Quick Start Guide](#-quick-start-guide)
   - [Prerequisites](#prerequisites)
@@ -44,9 +49,24 @@
 
 ---
 
+## 📸 Showcase
+
+<div align="center">
+  <img src="docs/screenshots/Dashboard.PNG" alt="RepoMind Dashboard" width="49%" />
+  <img src="docs/screenshots/Chat.PNG" alt="RepoMind Chat Interface" width="49%" />
+</div>
+
+---
+
 ## 🏗️ Architecture & Tech Stack
 
 RepoMind is built as a highly scalable, decoupled monorepo:
+
+<div align="center">
+  <img src="docs/screenshots/Architecture.PNG" alt="RepoMind Architecture" width="800" />
+</div>
+
+<br/>
 
 * **Backend:** FastAPI (Python), SQLAlchemy (SQLite/PostgreSQL), Celery, Redis.
 * **Frontend:** Next.js 15 (App Router), React, Tailwind CSS, Framer Motion, Three.js (WebGL).
